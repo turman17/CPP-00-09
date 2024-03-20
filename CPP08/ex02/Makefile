@@ -1,15 +1,23 @@
-NAME = scalar_types
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp 
-OBJ =  $(SRC:.cpp=.o)
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = MutantStack
 
-$(NAME):
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
+SRC = main.cpp 
+
+OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
 all: $(NAME)
 
-fclean:
-	rm $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
 
 re: fclean all

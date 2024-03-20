@@ -1,6 +1,7 @@
 
 #include "MutantStack.h"
 #include <list>
+#include <vector>
 
 template <typename T>
 void printContainer(T &container)
@@ -12,6 +13,14 @@ void printContainer(T &container)
 int main()
 {
     MutantStack<int> mstack;
+
+
+    // mstack.push(5);
+
+    // MutantStack<int>::iterator it = mstack.begin();
+
+    // for (int i = 0; it != mstack.end(); it++, i++)
+    //     std::cout << *it << std::endl;
 
     mstack.push(5);
     mstack.push(17);
@@ -34,18 +43,24 @@ int main()
         ++it;
     }
     std::cout << "here we end the iteration\n";
-    std::stack<int> s(mstack);
+    MutantStack<int, std::vector<int> > s;
 
-    // Now with std::list
-    std::cout << "Test with std::list" << std::endl;
-    std::list<int> list;
-    list.push_back(5);
-    list.push_back(17);
-    list.pop_back();
-    list.push_back(3);
-    list.push_back(5);
-    list.push_back(737);
-    list.push_back(0);
-    printContainer(list);
+    s.push(5);
+
+    std::cout << ":o -> " << *(s.begin()) << std::endl;
+
+
+
+    // // Now with std::list
+    // std::cout << "Test with std::list" << std::endl;
+    // std::list<int> list;
+    // list.push_back(5);
+    // list.push_back(17);
+    // list.pop_back();
+    // list.push_back(3);
+    // list.push_back(5);
+    // list.push_back(737);
+    // list.push_back(0);
+    // printContainer(list);
     return (0);
 }

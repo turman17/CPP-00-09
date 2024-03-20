@@ -3,10 +3,12 @@
 
 #include <stack>
 #include <iterator>
+#include <deque>
 #include <iostream>
 
-template <typename T>
-class MutantStack : public std::stack<T>
+
+template <typename T, typename Container=std::deque<T> >
+class MutantStack : public std::stack<T, Container>
 {
 public:
     MutantStack(){};
@@ -18,27 +20,16 @@ public:
     };
     ~MutantStack(){};
 
-    typedef typename std::stack<T>::container_type::iterator iterator;
-    typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+    typedef typename Container::iterator iterator;
 
     iterator begin()
     {
-        return this->c.begin();
+        return std::stack<T, Container>::c.begin();
     }
 
     iterator end()
     {
-        return this->c.end();
-    }
-
-    const_iterator begin() const
-    {
-        return this->c.begin();
-    }
-
-    const_iterator end() const
-    {
-        return this->c.end();
+        return std::stack<T, Container>::c.end();
     }
 
 private:
