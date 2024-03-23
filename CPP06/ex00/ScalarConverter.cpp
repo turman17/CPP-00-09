@@ -51,6 +51,14 @@ bool isNumber(const std::string &s)
     return hasDigits;
 }
 
+void imposible()
+{
+    std::cout << "char: imposible" << std::endl;
+    std::cout << "int: imposible" << std::endl;
+    std::cout << "float: imposible" << std::endl;
+    std::cout << "double:  imposible" << std::endl;
+}
+
 int getType(const std::string &toConvert)
 {
     if (toConvert.find_first_of('.') != std::string::npos &&
@@ -85,10 +93,7 @@ void fromFloat(std::string toConvert)
     }
     catch (const std::exception &e)
     {
-        std::cout << "char: imposible" << std::endl;
-        std::cout << "int: imposible" << std::endl;
-        std::cout << "float: imposible" << std::endl;
-        std::cout << "double:  imposible" << std::endl;
+        imposible();
     }
 }
 
@@ -104,10 +109,7 @@ void fromInt(std::string toConvert)
     }
     catch (const std::exception &e)
     {
-        std::cout << "char: imposible" << std::endl;
-        std::cout << "int: imposible" << std::endl;
-        std::cout << "float: imposible" << std::endl;
-        std::cout << "double:  imposible" << std::endl;
+        imposible();
     }
 }
 
@@ -123,10 +125,7 @@ void fromDouble(std::string toConvert)
     }
     catch (const std::exception &e)
     {
-        std::cout << "char: imposible" << std::endl;
-        std::cout << "int: imposible" << std::endl;
-        std::cout << "float: imposible" << std::endl;
-        std::cout << "double:  imposible" << std::endl;
+        imposible();
     }
 }
 
@@ -143,10 +142,7 @@ void fromChar(std::string toConvert)
     }
     catch (const std::exception &e)
     {
-        std::cout << "char: imposible" << std::endl;
-        std::cout << "int: imposible" << std::endl;
-        std::cout << "float: imposible" << std::endl;
-        std::cout << "double:  imposible" << std::endl;
+        imposible();
     }
 }
 
