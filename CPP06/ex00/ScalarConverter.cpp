@@ -40,19 +40,13 @@ bool isNumber(const std::string &s)
         if (s[i] == '.')
         {
             if (hasDot || i == start || i == s.size() - 1)
-            {
                 return false;
-            }
             hasDot = true;
         }
         else if (!isdigit(s[i]))
-        {
             return false;
-        }
         else
-        {
             hasDigits = true;
-        }
     }
     return hasDigits;
 }
@@ -76,78 +70,107 @@ int getType(const std::string &toConvert)
     else if (isNumber(toConvert))
         return INT;
     else
-        return INVALID; // Ensures all paths return a value
+        return INVALID;
 }
 
-void toInt(const std::string &toConvert, int type)
+void fromFloat(std::string toConvert)
 {
-    (void)type;
-    long int number = std::atoll(toConvert.c_str());
-    if (toConvert == "-inff" || toConvert == "+inff" || toConvert == "inff" || toConvert == "-inf" || toConvert == "+inf" || toConvert == "inf" || toConvert == "nanf" || toConvert == "nan")
-        std::cout << "int: imposible" << std::endl;
-    else if (number > MAX_INT)
-        std::cout
-            << "int: overflow\n";
-    else
-        std::cout << "int: " << number << std::endl;
-}
-
-void toChar(const std::string &toConvert, int type)
-{
-    if (toConvert == "-inff" || toConvert == "+inff" || toConvert == "inff" || toConvert == "-inf" || toConvert == "+inf" || toConvert == "inf" || toConvert == "nanf" || toConvert == "nan")
+    try
+    {
+        float converted = std::atof(toConvert.c_str());
+        std::cout << "char: " << (std::isprint(converted) ? static_cast<char>(converted) : '?') << std::endl;
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
+        std::cout << "float: " << converted << "f" << std::endl;
+        std::cout << "double:  " << static_cast<double>(converted) << std::endl;
+    }
+    catch (const std::exception &e)
     {
         std::cout << "char: imposible" << std::endl;
-        return;
+        std::cout << "int: imposible" << std::endl;
+        std::cout << "float: imposible" << std::endl;
+        std::cout << "double:  imposible" << std::endl;
     }
-    else if (type != CHAR && type != INT)
+}
+
+void fromInt(std::string toConvert)
+{
+    try
     {
-        std::cout << "char: non-displayable\n";
-        return;
+        int converted = std::atoi(toConvert.c_str());
+        std::cout << "char: " << (std::isprint(converted) ? static_cast<char>(converted) : '?') << std::endl;
+        std::cout << "int: " << converted << std::endl;
+        std::cout << "float: " << static_cast<float>(converted) << "f" << std::endl;
+        std::cout << "double:  " << static_cast<double>(converted) << std::endl;
     }
-    long int asciiCode = std::atol(toConvert.c_str());
-    if (asciiCode >= 32 && asciiCode <= 126)
-        std::cout << "char: '" << static_cast<char>(asciiCode) << "'\n";
+    catch (const std::exception &e)
+    {
+        std::cout << "char: imposible" << std::endl;
+        std::cout << "int: imposible" << std::endl;
+        std::cout << "float: imposible" << std::endl;
+        std::cout << "double:  imposible" << std::endl;
+    }
+}
+
+void fromDouble(std::string toConvert)
+{
+    try
+    {
+        float converted = std::atof(toConvert.c_str());
+        std::cout << "char: " << (std::isprint(converted) ? static_cast<char>(converted) : '?') << std::endl;
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
+        std::cout << "float: " << converted << "f" << std::endl;
+        std::cout << "double:  " << static_cast<double>(converted) << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "char: imposible" << std::endl;
+        std::cout << "int: imposible" << std::endl;
+        std::cout << "float: imposible" << std::endl;
+        std::cout << "double:  imposible" << std::endl;
+    }
+}
+
+void fromChar(std::string toConvert)
+{
+    try
+    {
+        char converted = toConvert[0];
+
+        std::cout << "char: " << converted << std::endl;
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
+        std::cout << "float: " << converted << "f" << std::endl;
+        std::cout << "double:  " << static_cast<double>(converted) << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "char: imposible" << std::endl;
+        std::cout << "int: imposible" << std::endl;
+        std::cout << "float: imposible" << std::endl;
+        std::cout << "double:  imposible" << std::endl;
+    }
+}
+
+void fromInfinite(std::string toConvert)
+{
+    bool isInf = toConvert == "inf" || toConvert == "+inf" || toConvert == "inff" || toConvert == "+inff" || toConvert == "-inf" || toConvert == "-inff";
+    bool isNaN = toConvert == "nan" || toConvert == "nanf";
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    if (isInf)
+    {
+        std::cout << "float: " << (toConvert.find('f') == std::string::npos ? toConvert + "f" : toConvert) << std::endl;
+        std::cout << "double: " << toConvert.erase(toConvert.find('f'), 1) << std::endl;
+    }
+    else if (isNaN)
+    {
+        std::cout << "float: nanf" << std::endl;
+        std::cout << "double: nan" << std::endl;
+    }
     else
-        std::cout << "char: non-displayable\n";
-}
-
-void infinityDetect(int number)
-{
-    if (number == std::numeric_limits<double>::infinity())
     {
-        std::cout << "inf";
-        return;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
     }
-    else if (number == -std::numeric_limits<double>::infinity())
-    {
-        std::cout << "-inf";
-        return;
-    }
-    else if (std::isnan(number))
-    {
-        std::cout << "nan";
-        return;
-    }
-}
-
-void toDouble(const std::string &toConvert)
-{
-    double number = std::atof(toConvert.c_str());
-    std::cout << "double: ";
-    infinityDetect(number);
-    std::cout << std::fixed << std::setprecision(1) << number;
-    std::cout << std::endl;
-}
-
-void toFloat(std::string toConvert)
-{
-    float number = static_cast<float>(std::atof(toConvert.c_str()));
-
-    std::cout << "float: ";
-
-    infinityDetect(number);
-    std::cout << std::fixed << std::setprecision(1) << number << 'f';
-    std::cout << std::endl;
 }
 
 void ScalarConverter::convert(std::string toConvert)
@@ -158,11 +181,23 @@ void ScalarConverter::convert(std::string toConvert)
         std::cout << "char: imposible\nint: imposible\nfloat: imposible\ndouble: imposible\n";
         return;
     }
-    else
+    switch (type)
     {
-        toInt(toConvert, type);
-        toChar(toConvert, type);
-        toFloat(toConvert);
-        toDouble(toConvert);
+    case INFINITE:
+        fromInfinite(toConvert);
+        break;
+    case FLOAT:
+        fromFloat(toConvert);
+        break;
+    case INT:
+        fromInt(toConvert);
+        break;
+    case DOUBLE:
+        fromDouble(toConvert);
+        break;
+    case CHAR:
+        fromChar(toConvert);
+        break;
+        
     }
 }
