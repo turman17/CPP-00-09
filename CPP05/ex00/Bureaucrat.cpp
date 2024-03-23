@@ -62,24 +62,15 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 void Bureaucrat::increaseGrade()
 {
-    if (_grade > 150)
-        throw GradeTooLowException();
-    else if (_grade == 1)
-        std::cout << "No way to increase\n";
-    else if (_grade < 1)
+    if (_grade == 1)
         throw GradeTooHighException();
-    else
         _grade -= 1;
 }
 
 void Bureaucrat::decreaseGrade()
 {
-    if (_grade > 150)
+    if (_grade == 150)
         throw GradeTooLowException();
-    else if (_grade == 1)
-        std::cout << "No way to increase\n";
-    else if (_grade < 1)
-        throw GradeTooHighException();
     _grade += 1;
 }
 

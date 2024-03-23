@@ -7,7 +7,7 @@ PresidentialPardonForm::PresidentialPardonForm()
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
-    : AForm("Def", 150, 100), _target(target)
+    : AForm("Def", 25, 5), _target(target)
 {
     std::cout << "Def const called\n";
 }

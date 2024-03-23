@@ -9,7 +9,7 @@ RobotomyRequestForm::RobotomyRequestForm()
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-    : AForm("Def", 100, 100), _target(target)
+    : AForm("Def", 72, 45), _target(target)
 {
     std::cout << "Def constructor was called\n";
 }

@@ -7,7 +7,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-: AForm("Def", 150, 100), _target(target)
+    : AForm("Def", 145, 137), _target(target)
 {
     std::cout << "Def const called\n";
 }
