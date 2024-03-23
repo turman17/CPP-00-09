@@ -1,6 +1,6 @@
 NAME = bureaucrat
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 SRC = main.cpp Bureaucrat.cpp
 OBJ =  $(SRC:.cpp=.o)
 

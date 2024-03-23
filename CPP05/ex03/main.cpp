@@ -18,8 +18,8 @@ int main(void)
     rrf = someRandomIntern.makeForm("robotomy request", "Wall-e");
     scf = someRandomIntern.makeForm("shrubbery creation", "Home");
     ppf = someRandomIntern.makeForm("presidential pardon", "Clinton");
-    unknown = someRandomIntern.makeForm("unknown", "unknown");
 
+    unknown = someRandomIntern.makeForm("unknown", "unknown");
     delete rrf;
     delete scf;
     delete ppf;

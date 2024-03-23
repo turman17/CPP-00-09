@@ -17,7 +17,7 @@ private:
     int const _toExecute;
 public:
     Form();
-    Form(std::string const &name, int const isSigned, int const toexecute);
+    Form(std::string name, int isSigned, int toexecute);
     Form(Form const& other);
     ~Form();
     Form &operator=(Form const &other);

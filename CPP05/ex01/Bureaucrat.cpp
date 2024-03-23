@@ -7,22 +7,15 @@ Bureaucrat::Bureaucrat()
     std::cout << "Def constructor was called\n";
 }
 
-Bureaucrat::Bureaucrat(std::string const &name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade)
     :_name(name)
 {
-    try
-    {
         if(grade > 150)
             throw GradeTooLowException();
         else if(grade < 1)
             throw GradeTooHighException();
         else
             _grade = grade;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Execption caught: " << e.what() << std::endl;
-    }
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &other)
@@ -62,8 +55,6 @@ const char * Bureaucrat::GradeTooLowException::what() const throw(){
 }
 
 void Bureaucrat::increaseGrade(){
-    try
-    {
         if(_grade > 150)
             throw GradeTooLowException();
         else if (_grade == 1)
@@ -72,17 +63,10 @@ void Bureaucrat::increaseGrade(){
             throw GradeTooHighException();
         else
             _grade -= 1;
-    }
-    catch(std::exception &e)
-    {
-        std::cout << "Execption caught: " << e.what() << std::endl;
-    }
 }
 
 void Bureaucrat::decreaseGrade()
 {
-    try
-    {
         if (_grade > 150)
             throw GradeTooLowException();
         else if (_grade == 1)
@@ -90,11 +74,6 @@ void Bureaucrat::decreaseGrade()
         else if (_grade < 1)
             throw GradeTooHighException();
         _grade += 1;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Execption caught: " << e.what() << std::endl;
-    }
 }
 
 void Bureaucrat::signForm(Form &form)

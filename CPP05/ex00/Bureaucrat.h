@@ -10,7 +10,7 @@ public :
 
     Bureaucrat();
     Bureaucrat(Bureaucrat const &other);
-    Bureaucrat(std::string const &name, int grade);
+    Bureaucrat(std::string name, unsigned int grade);
     ~Bureaucrat();
     Bureaucrat &operator=(Bureaucrat const &other);
     std::string getName(void) const;

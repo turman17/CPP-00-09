@@ -17,11 +17,11 @@ int main()
         std::cout << highForm << std::endl;
         std::cout << lowForm << std::endl;
 
-        // Attempting to sign forms with both bureaucrats
+        std::cout << "i am trying \n\n\n\n\n";
         highRank.signForm(highForm);
-        highRank.signForm(lowForm); // Should succeed
-        lowRank.signForm(highForm); // Should fail
-        lowRank.signForm(lowForm);  // Should succeed
+        highRank.signForm(lowForm); 
+        lowRank.signForm(highForm);
+        lowRank.signForm(lowForm);
 
         std::cout << highForm << std::endl;
         std::cout << lowForm << std::endl;

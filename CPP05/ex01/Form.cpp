@@ -6,9 +6,13 @@ Form::Form()
     std::cout << "DEF const was called\n";
 }
 
-Form::Form(std::string const &name, int const toSign, int const toExecute)
+Form::Form(std::string name, int toSign, int toExecute)
     : _name(name), _isSigned(false), _toSign(toSign), _toExecute(toExecute)
 {
+    if (toSign > 150 || toExecute > 150)
+        throw GradeTooLowException();
+    else if (toSign < 1 || toExecute < 1)
+        throw GradeTooHighException();
     std::cout << "Constructor was called\n";
 }
 
@@ -27,61 +31,31 @@ Form& Form::operator=(Form const &other)
     return(*this);
 }
 
-Form::~Form()
-{
-    std::cout << "Destractor was called\n";
-}
+Form::~Form() {std::cout << "Destractor was called\n";}
 
-std::string Form::getName(void) const
-{
-    return(_name);
-}
+std::string Form::getName(void) const {return(_name);}
 
-bool Form::getIsSigned() const
-{
-    return(_isSigned);
-}
+bool Form::getIsSigned() const {return(_isSigned);}
 
-int Form::getToSign() const
-{
-    return(_toSign);
-}
+int Form::getToSign() const {return(_toSign);}
 
-int Form::getToExecute() const
-{
-    return(_toExecute);
-}
+int Form::getToExecute() const {return(_toExecute);}
 
 void Form::beSigned(Bureaucrat const &bureaucrat)
 {
-    if (_isSigned)
-    {
-        throw GradeIsSigned(); // Exception indicating form is already signed
-    }
-    else if (bureaucrat.getGrade() > _toSign)
-    {
-        throw GradeTooLowException(); // Exception indicating bureaucrat's grade is too low
-    }
+    if (bureaucrat.getGrade() > _toSign)
+        throw GradeTooLowException();
+    else if (_isSigned)
+        throw GradeIsSigned();
     else
-    {
         _isSigned = true;
-    }
 }
 
-const char *Form::GradeTooHighException::what() const throw()
-{
-    return ("Grade is too High");
-}
+const char *Form::GradeTooHighException::what() const throw(){return ("Grade is too High");}
 
-const char *Form::GradeTooLowException::what() const throw()
-{
-    return ("Grade is too Low");
-}
+const char *Form::GradeTooLowException::what() const throw() {return ("Grade is too Low");}
 
-const char *Form::GradeIsSigned::what() const throw()
-{
-    return ("Grade is Signed");
-}
+const char *Form::GradeIsSigned::what() const throw() {return ("Grade is Signed");}
 
 std::ostream &operator<<(std::ostream &os, Form const &form)
 {

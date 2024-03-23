@@ -53,14 +53,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
                           ,+=i))IIIIIITTTTTITIIIIII)))I)i=+,,:+i)=i+ \n\
                          ,+i))IIIIIITTTTTTTTTTTTI))IIII))i=::i))i=' \n\
                         ,=i))IIIIITLLTTTTTTTTTTIITTTTIII)+;+i)+i` \n\
-                        =i))IIITTLTLTTTTTTTTTIITTLLTTTII+:i)ii:' \n\
-                       +i))IITTTLLLTTTTTTTTTTTTLLLTTTT+:i)))=, \n\
                        =))ITTTTTTTTTTTLTTTTTTLLLLLLTi:=)IIiii; \n\
-                      .i)IIITTTTTTTTLTTTITLLLLLLLT);=)I)))))i; \n\
                       :))IIITTTTTLTTTTTTLLHLLLLL);=)II)IIIIi=: \n\
                       :i)IIITTTTTTTTTLLLHLLHLL)+=)II)ITTTI)i= \n\
                       .i)IIITTTTITTLLLHHLLLL);=)II)ITTTTII)i+ \n\
-                      =i)IIIIIITTLLLLLLHLL=:i)II)TTTTTTIII)i' \n\
                     +i)i)))IITTLLLLLLLLT=:i)II)TTTTLTTIII)i; \n\
                   +ii)i:)IITTLLTLLLLT=;+i)I)ITTTTLTTTII))i; \n\
                  =;)i=:,=)ITTTTLTTI=:i))I)TTTLLLTTTTTII)i; \n\
