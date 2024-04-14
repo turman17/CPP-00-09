@@ -8,23 +8,23 @@ template <typename T>
 class Array
 {
 public:
-    Array() : _elements(NULL), _arraySize(0) {} // Corrected: Removed semicolon
+    Array() : _elements(NULL), _arraySize(0) {}
 
     Array(unsigned int size) : _arraySize(size)
     {
-        _elements = new T[size](); // Corrected: Changed 'n' to 'size'
+        _elements = new T[size]();
     }
 
     Array(Array const &other) : _elements(NULL), _arraySize(other._arraySize)
-    {                  // Corrected: Removed semicolon
-        *this = other; // Using assignment operator for deep copy
+    {
+        *this = other;
     }
 
     Array &operator=(Array const &other)
     {
         if (this != &other)
         {
-            delete[] _elements; // Corrected typo 'delere' to 'delete'
+            delete[] _elements;
             _arraySize = other._arraySize;
             _elements = new T[_arraySize];
             for (unsigned int i = 0; i < _arraySize; i++)
