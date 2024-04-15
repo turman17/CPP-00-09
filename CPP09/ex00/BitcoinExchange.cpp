@@ -86,14 +86,19 @@ void output(const std::map<std::string, double> &dataToTable, const char *input)
             int validateResult = findAndValidate(date, number, dataToTable, foundDate);
             if (validateResult == 0)
             {
-                double priceAtDay = dataToTable.at(foundDate);
-                if (priceAtDay < 0)
-                    std::cout << "Error: Negative price on " << foundDate << " with price " << priceAtDay << std::endl;
+                if (number > 1000)
+                    std::cout << "Error: Number is too big: " << number << std::endl;
                 else
-                    std::cout << "Date: " << date << ", Number: " << number << " => " << number * priceAtDay << std::endl;
+                {
+                    double priceAtDay = dataToTable.at(foundDate);
+                    if (priceAtDay < 0)
+                        std::cout << "Error: Negative price on " << foundDate << " with price " << priceAtDay << std::endl;
+                    else
+                        std::cout << "Date: " << date << ", Number: " << number << " => " << number * priceAtDay << std::endl;
+                }
             }
             else
-                std::cerr << "Validation failed for " << date << " with number " << number << std::endl; // Diagnostic output
+                std::cerr << "Validation failed for " << date << " with number " << number << std::endl;
         }
         else
             std::cerr << "Failed to parse the input string: '" << line << "'" << std::endl;

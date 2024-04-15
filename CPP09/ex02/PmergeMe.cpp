@@ -10,7 +10,7 @@ void error()
     exit(1);
 }
 
-bool PmergeMe::validNum(const std::string &num) // Use const std::string&
+bool PmergeMe::validNum(const std::string &num)
 {
     if (num.empty())
         return false;
@@ -34,11 +34,11 @@ bool PmergeMe::validNum(const std::string &num) // Use const std::string&
 
 void PmergeMe::loadList(char **argv)
 {
-    std::set<long long> unique_numbers; // Adjusted to std::set for C++98
+    std::set<long long> unique_numbers;
 
     while (argv && *argv)
     {
-        std::string n = *argv; // Direct assignment
+        std::string n = *argv;
 
         if (!validNum(n))
         {
